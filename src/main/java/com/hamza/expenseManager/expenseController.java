@@ -48,7 +48,7 @@ public class expenseController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse> getExpenseById(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse> getExpenseById(@PathVariable String id) {
         try {
             expense currrentExpense = expenseRepository.findById(id)
                     .orElseThrow(() -> new ResourceNotFoundException("Todo not found with id: " + id));
@@ -73,7 +73,7 @@ public class expenseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ApiResponse> updateExpense(@PathVariable Long id, @RequestBody expense expenseDetails) {
+    public ResponseEntity<ApiResponse> updateExpense(@PathVariable String id, @RequestBody expense expenseDetails) {
         try {
             expense expense = expenseRepository.findById(id)
                     .orElseThrow(() -> new ResourceNotFoundException("Expense not found with id: " + id));
@@ -90,7 +90,7 @@ public class expenseController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResponse> deleteExpense(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse> deleteExpense(@PathVariable String id) {
         try {
             expense expense = expenseRepository.findById(id)
                     .orElseThrow(() -> new ResourceNotFoundException("Expense not found with id: " + id));
